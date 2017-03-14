@@ -15,20 +15,8 @@ package p.m.g.googledecodingmg;
  * δεν μπορούν να έχουν την τιμή 0 (W,G,D)
  * 2)Θεωρούμε ότι οι τιμές M και E μπορούν να εναλλάσσονται.
  */
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String args[]){
-        ArrayList<String> arW = fillListWithNumbers();
-        ArrayList<String> arD = fillListWithNumbers();
-        ArrayList<String> arO = fillListWithNumbers();
-        ArrayList<String> arT = fillListWithNumbers();
-        ArrayList<String> arG = fillListWithNumbers();
-        ArrayList<String> arL = fillListWithNumbers();
-        ArrayList<String> arE = fillListWithNumbers();
-        ArrayList<String> arC = fillListWithNumbers();
-        ArrayList<String> arM = fillListWithNumbers();
-        
         System.out.println("Begin:");
         System.out.println("Searching...");
         
@@ -45,28 +33,23 @@ public class Main {
                                             if (areThereSameDigits(w,d,o,t,g,l,e,c,m))
                                                 continue ;
                                             
-                                            int wwwdot = makeSixDigitNum(arW.get(w) , arW.get(w) ,
-                                                    arW.get(w) , arD.get(d) ,arO.get(o) ,arT.get(t)) ;
+                                            int wwwdot = makeSixDigitNum(w,w,w,d,o,t) ;
                                             
-                                            int google = makeSixDigitNum(arG.get(g) , arO.get(o) ,
-                                                    arO.get(o) , arG.get(g) ,arL.get(l) ,arE.get(e)) ;
+                                            int google = makeSixDigitNum(g,o,o,g ,l,e) ;
                                             
                                             if (google>wwwdot) //For optimization.
                                                 continue ;
                                             
                                             int result = wwwdot - google ;
                                             
-                                            int dotcom = makeSixDigitNum(arD.get(d) , arO.get(o) ,
-                                                    arT.get(t) , arC.get(c) ,arO.get(o) ,arM.get(m)) ;
+                                            int dotcom = makeSixDigitNum(d,o ,t, c,o ,m) ;
                                             
                                             if (result==dotcom){
-                                                int googlm = makeSixDigitNum(arG.get(g) , arO.get(o) ,
-                                                        arO.get(o) , arG.get(g) ,arL.get(l) ,arM.get(m)) ;
+                                                int googlm = makeSixDigitNum(g,o,o,g ,l,m) ;
                                                 
                                                 int newResult = wwwdot - googlm ;
                                                 
-                                                int dotcoe = makeSixDigitNum(arD.get(d) , arO.get(o) ,
-                                                        arT.get(t) , arC.get(c) ,arO.get(o) ,arE.get(e)) ;
+                                                int dotcoe = makeSixDigitNum(d,o ,t, c,o ,e) ;
                                                 if (newResult==dotcoe){
                                                     System.out.println("* * * * * * * *");
                                                     System.out.println("Find solution!");
@@ -138,36 +121,16 @@ public class Main {
      * είναι αριθμητικά ψηφία, και τα ενώνει ώστε να δημιουργηθεί και να επιστραφεί
      * ένας ακέραιος αριθμός με τα παραπάνω 6 ψηφία.
      * @param c1 Ψηφίο που καθορίζει τις 100.000δες (c1 * 100000)
-     * @param c2 Ψηφίο που καθορίζει τις 10.000δες (c1 * 10000)
-     * @param c3 Ψηφίο που καθορίζει τις χιλιάδες (c1 * 1000)
-     * @param c4 Ψηφίο που καθορίζει τις εκατοντάδες (c1 * 100)
-     * @param c5 Ψηφίο που καθορίζει τις δεκάδες (c1 * 10)
-     * @param c6 Ψηφίο που καθορίζει τις μονάδες (c1 * 1)
+     * @param c2 Ψηφίο που καθορίζει τις 10.000δες (c2 * 10000)
+     * @param c3 Ψηφίο που καθορίζει τις χιλιάδες (c3 * 1000)
+     * @param c4 Ψηφίο που καθορίζει τις εκατοντάδες (c4 * 100)
+     * @param c5 Ψηφίο που καθορίζει τις δεκάδες (c5 * 10)
+     * @param c6 Ψηφίο που καθορίζει τις μονάδες (c6 * 1)
      * @return Επιστρέφει ένα ακέραιο αριθμό που με την σειρά τα c1..c6 ψηφία.
      */
-    private static int makeSixDigitNum(String c1, String c2, String c3, String c4, String c5, String c6)
+    private static int makeSixDigitNum(int c1, int c2, int c3, int c4, int c5, int c6)
     {
-        return Integer.parseInt(c1 + c2 + c3 + c4 + c5 + c6) ;
-    }
-    /**
-     * Επιστρέφει μια λίστα από {@link String} με τους αριθμούς από 0 μέχρι 9
-     * @return μια λίστα από {@link String}.
-     */
-    private static ArrayList<String> fillListWithNumbers()
-    {
-        ArrayList<String> tmpArList = new ArrayList<>() ;
-        tmpArList.add("0") ;
-        tmpArList.add("1") ;
-        tmpArList.add("2") ;
-        tmpArList.add("3") ;
-        tmpArList.add("4") ;
-        tmpArList.add("5") ;
-        tmpArList.add("6") ;
-        tmpArList.add("7") ;
-        tmpArList.add("8") ;
-        tmpArList.add("9") ;
-        
-        return tmpArList ;
+        return c1 * 100000 + c2 * 10000 + c3 * 1000 + c4 * 100 + c5 * 10 + c6 ;
     }
 }
 /*
