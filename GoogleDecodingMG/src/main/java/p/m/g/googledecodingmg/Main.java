@@ -45,6 +45,9 @@ public class Main {
                                             int dotcom = makeSixDigitNum(d,o ,t, c,o ,m) ;
                                             
                                             if (result==dotcom){
+                                                //Λογικά, δεν χρειάζονται τα παρακάτω βήματα
+                                                //διότι έχει βρεθεί λύση της εξίσωσης, άλλα
+                                                //έχουν μείνει για επαλήθευση της βοήθειας (2)!
                                                 int googlm = makeSixDigitNum(g,o,o,g ,l,m) ;
                                                 
                                                 int newResult = wwwdot - googlm ;
@@ -57,6 +60,11 @@ public class Main {
                                                     System.out.println(wwwdot + " - " + google +" = "+ dotcom + " (" + result +")");
                                                     System.out.println("["+wwwdot + " - " + googlm +" = "+ dotcoe + " (" + newResult +")]");
                                                     System.out.println("* * * * * * * *");
+                                    
+                                                    //Έχουν γίνει "σχόλια" οι παρακάτω 2 γραμμές, για να γίνει 
+                                                    //εξαντλητική αναζήτηση ώστε να βρεθούν πιθανόν περισσότερες λύσεις...
+                                                    //System.out.println("End!");                                            
+                                                    //return ;
                                                 }
                                             }
                                         }
